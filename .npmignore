@@ -1,0 +1,27 @@
+# Geliştirme dosyaları
+.git
+.github
+.vscode
+.idea
+*.log
+*.swp
+.DS_Store
+
+# Testler
+test/
+tests/
+__tests__/
+coverage/
+
+# Dokümantasyon
+docs/
+examples/
+demo/
+
+# Diğer
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.* 
