@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Portal</title>
+    <!-- Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <!-- Configure Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-bg': '#0D1321',
+                        'secondary-bg': '#1D2D44',
+                        'card-bg': '#3E5C76',
+                        'highlight': '#748CAB',
+                        'text-color': '#F0EBD8',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .glass-effect {
+            background-color: rgba(62, 92, 118, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, #748CAB, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .gradient-hover:hover::before {
+            opacity: 0.2;
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .rotate-on-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .link-hover:hover .rotate-on-hover {
+            animation: rotate 0.3s forwards;
+        }
+        
+        /* Custom Scrollbar Styles */
+        /* For Webkit browsers (Chrome, Safari, newer versions of Opera) */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1D2D44;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #748CAB;
+            border-radius: 10px;
+            border: 2px solid #1D2D44;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8da6c2;
+        }
+        
+        /* For Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #748CAB #1D2D44;
+        }
+        
+        /* For Edge and IE */
+        body {
+            -ms-overflow-style: none;
+        }
+    </style>
+</head>
+<body class="bg-primary-bg text-text-color min-h-screen overflow-x-hidden relative">
+    <div id="particles-js"></div>
+    
+    <div class="max-w-3xl mx-auto p-4 md:p-8 relative z-10">
+        <header class="flex flex-col items-center mb-8 text-center">
+            <div class="w-24 h-24 md:w-30 md:h-30 rounded-full overflow-hidden mb-4 border-3 border-highlight shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl reveal">
+                <img src="https://i.pravatar.cc/150?img=3" alt="Profile Picture" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold mb-2 text-text-color reveal">İsim Soyisim</h1>
+            <p class="text-base md:text-lg font-light mb-6 text-highlight reveal">Frontend Geliştirici & UI/UX Tasarımcı</p>
+            <div class="flex gap-4 mb-8 reveal">
+                <a href="#" class="w-10 h-10 rounded-full bg-secondary-bg flex items-center justify-center text-xl shadow-md transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-highlight hover:text-primary-bg">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-secondary-bg flex items-center justify-center text-xl shadow-md transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-highlight hover:text-primary-bg">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-secondary-bg flex items-center justify-center text-xl shadow-md transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-highlight hover:text-primary-bg">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-secondary-bg flex items-center justify-center text-xl shadow-md transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-highlight hover:text-primary-bg">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </header>
+        
+        <main>
+            <section class="flex flex-col gap-4 mb-8" id="links-container">
+                <!-- Links will be dynamically loaded here from data.js -->
+            </section>
+        </main>
+        
+        <footer class="text-center py-4 text-sm text-text-color/70 border-t border-white/10 mt-8 reveal">
+            <p>© 2023 Link Portal | <a href="#" class="hover:text-highlight transition-colors duration-300">Gizlilik Politikası</a></p>
+        </footer>
+    </div>
+    
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
